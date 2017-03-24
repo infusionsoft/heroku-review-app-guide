@@ -117,23 +117,24 @@ Next we'll add the public half of your newly generated key (`new_key.pub`) to Gi
         * Copy the contents of `new_key.pub` into the _key_ field
         * Click "Add Key"
 
-Now that you've setup your public key, we'll add the private key to Heroku as an environment variable so it can be easily and securely managed. In your terminal, run the following to base64 encode the private key.
+Now that you've setup your public key, we'll add the private key to Heroku as an environment variable so it can be easily and securely managed. In your terminal, run the following to base64 encode and copy the private key.
 
+MacOS
 ```sh
-$ cat path/to/new_key | base64 > encoded.txt
+$ cat path/to/new_key | base64 | pbcopy
 ```
 
-Now copy the contents of `encoded.txt`, and follow these steps to add it to Heroku.
+Now follow these steps to add it to Heroku.
 
 * In Heroku, click on your app.
 * Under production, click on the app title.
 * Click on the "Settings" navigation menu.
 * Click "Reveal Config Vars"
 * Enter `GITHUB_SSH_KEY` for the _KEY_ field.
-* Enter the copied text from `encoded.txt` into the _VALUE_ field.
+* Enter your recently copied base64 encoded key into the _VALUE_ field.
 * Click "Add"
 
-You can now delete your local copies of `new_key.pub`, `new_key` & `encoded.txt`.
+You can now delete your local copies of `new_key.pub` & `new_key`.
 
 In order to use your new environment variable, you'll need to tell Heroku to share it with your app. Do this by adding it to the `app.json` file.
 

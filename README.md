@@ -8,9 +8,13 @@
 
 #### Basic Setup (Public Dependencies)
 
+###### Heroku Setup:
 1. Create a new Heroku App
-1. Create a new Pipeline from the App
-1. Connect Pipeline to desired GitHub repo
+1. While viewing your app and under the "Deploy" tab, click "New Pipeline...".
+1. Name your pipeline, and click "Create Pipeline".
+1. Click "Connect to GitHub"
+1. On the next screen, search the repo you want to enable your review apps on and click "Connect".
+1. Click "Pipeline" in navigation.
 1. Enable Review Apps through the following instructions:
 
 Heroku requires a basic `app.json` file ([learn more](https://devcenter.heroku.com/articles/app-json-schema)) in your project's **default branch** to enable review apps within the Heroku Dashboard.
@@ -73,14 +77,21 @@ Then add a new script to `package.json` so the server can be launched.
 }
 ```
 
-The final step is to create `Procfile` ([learn more](https://devcenter.heroku.com/articles/procfile)) in the project root. This file will run your project's setup after installing the required dependencies.
+The final code step is to create a `Procfile` ([learn more](https://devcenter.heroku.com/articles/procfile)) in the project root. This file will run your project's setup after installing the required dependencies.
 
 ```sh
 web: npm run heroku-init
 ```
 
----
+###### Finalize Heroku Setup
+1. From your created pipeline, click "Enable Review Apps...".
+1. Enable "Create new review apps for new pull requests automatically". If you don't, your team will need to log into Heroku to create them manually for each pull request.
+    * This will affect your overall [cost](https://devcenter.heroku.com/articles/github-integration-review-apps#review-apps-management-and-costs).
+1. You'll also want to enable "Destroy stale review apps automatically".
+    * This will affect your overall [cost](https://devcenter.heroku.com/articles/github-integration-review-apps#review-apps-management-and-costs).
+1. Click "Enable"
 
+---
 
 #### Advanced Setup (Private Dependencies using SSH)
 

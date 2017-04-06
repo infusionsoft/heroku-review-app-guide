@@ -87,7 +87,7 @@ web: npm run heroku-init
 1. From your created pipeline, click "Enable Review Apps...".
 1. Enable "Create new review apps for new pull requests automatically". If you don't, your team will need to log into Heroku to create them manually for each pull request.
     * This will affect your overall [cost](https://devcenter.heroku.com/articles/github-integration-review-apps#review-apps-management-and-costs).
-1. You'll also want to enable "Destroy stale review apps automatically".
+1. You may want to enable "Destroy stale review apps automatically". This will shut down the Review App if there have been no commits to the branch for 5 days.
     * This will affect your overall [cost](https://devcenter.heroku.com/articles/github-integration-review-apps#review-apps-management-and-costs).
 1. Click "Enable"
 

@@ -162,10 +162,12 @@ In order to use your new environment variable, you'll need to tell Heroku to sha
 
 Now that we have access to the private key, it's time to build two scripts to take advantage of it. The first script will be called by Heroku just before running NPM ([learn more](https://devcenter.heroku.com/articles/nodejs-support#heroku-specific-build-steps)), and will setup the SSH key for use. This script will be called `heroku-prebuild.sh`, and will be stored in `/bin`.
 
+*The following snippet is attributed to [fiznool](http://stackoverflow.com/users/1171775/fiznool) via [Stack Overflow](http://stackoverflow.com/a/29677091).*
+
 ```sh
 #!/bin/bash
 # Generates an SSH config file for connections if a config var exists.
-# Credit to http://stackoverflow.com/a/29677091
+# Credit to fiznool via http://stackoverflow.com/a/29677091
 
 if [ "$GITHUB_SSH_KEY" != "" ]; then
   echo "Detected SSH key for git. Adding SSH config"
@@ -202,10 +204,12 @@ fi
 
 The second script will clean up the SSH files to keep the environment secure. This script will be called `heroku-postbuild.sh`, and will be stored in `/bin`.
 
+*The following snippet is attributed to [fiznool](http://stackoverflow.com/users/1171775/fiznool) via [Stack Overflow](http://stackoverflow.com/a/29677091).*
+
 ```sh
 #!/bin/bash
 # Removes SSH key after use
-# Credit to http://stackoverflow.com/a/29677091
+# Credit to `fiznool` via http://stackoverflow.com/a/29677091
 
 if [ "$GITHUB_SSH_KEY" != "" ]; then
   echo "Cleaning up SSH config"
